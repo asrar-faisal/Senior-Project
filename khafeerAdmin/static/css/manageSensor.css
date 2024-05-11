@@ -1,0 +1,283 @@
+.manage-sensors{
+  font-weight: 700;
+}
+ 
+#addSensorButton{
+  position: absolute;
+  left: -65px;
+}
+#addSensor{
+  cursor: pointer;
+  background: #295f81;
+  /* rounded corners */
+  border-radius: 5px;
+  width: 120px;
+  height: 40px;
+  
+}
+#addSensor:hover{
+  background: #6092AB;
+}
+#addSensor:active{
+  background-color: #295F81;
+}
+
+#addSensorText{
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+.sensors-table {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  position: relative;
+  width: 1244px;
+  margin: 75px 0 0 14px;
+  background: #e6e6f2;
+  border: 4px solid #000000;
+  border-radius: 5px;
+}
+.table-head {
+  display: flex;
+  align-items: flex-start;
+  align-self: stretch;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  position: relative;
+  min-width: 0;
+  background: #295f81;
+  border-top: 1px solid #295f81;
+  z-index: 1;
+}
+.sensor-id-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
+  gap: 10px;
+  position: relative;
+  padding: 10px 10px 10px 10px;
+  z-index: 2;
+}
+.sensor-id-location {
+  flex-shrink: 0;
+  flex-basis: auto;
+  position: relative;
+  height: 21px;
+  color: #e6e6f2;
+  font-family: Poppins, sansSerif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 3;
+}
+.sensor-status-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
+  gap: 10px;
+  position: relative;
+  padding: 10px 10px 10px 10px;
+  z-index: 4;
+}
+.sensor-status {
+  flex-shrink: 0;
+  flex-basis: auto;
+  position: relative;
+  height: 21px;
+  color: #e6e6f2;
+  font-family: Poppins, sansSerif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 5;
+}
+.road-status-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
+  gap: 10px;
+  position: relative;
+  padding: 10px 10px 10px 10px;
+  z-index: 6;
+}
+.road-status {
+  flex-shrink: 0;
+  flex-basis: auto;
+  position: relative;
+  height: 21px;
+  color: #e6e6f2;
+  font-family: Poppins, sansSerif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 7;
+}
+.remove-sensor-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
+  gap: 10px;
+  position: relative;
+  padding: 10px 10px 10px 10px;
+  z-index: 8;
+}
+.remove-sensor {
+  flex-shrink: 0;
+  flex-basis: auto;
+  position: relative;
+  height: 21px;
+  color: #e6e6f2;
+  font-family: Poppins, sansSerif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 9;
+}
+.row {
+  display: flex;
+  align-items: flex-start;
+  align-self: stretch;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  position: relative;
+  min-width: 0;
+  background: #e6e6f2;
+  border-top: 1px solid #295f81;
+  z-index: 10;
+}
+.firstColumn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
+  gap: 10px;
+  position: relative;
+  padding: 10px 10px 10px 10px;
+  z-index: 11;
+}
+.firstColumnData {
+  flex-shrink: 0;
+  flex-basis: auto;
+  position: relative;
+  height: 21px;
+  color: #000000;
+  font-family: Poppins, sansSerif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 12;
+}
+.floodStatusData {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
+  gap: 10px;
+  position: relative;
+  padding: 10px 10px 10px 10px;
+  z-index: 13;
+}
+.openClosedPending {
+  flex-shrink: 0;
+  flex-basis: auto;
+  position: relative;
+  height: 21px;
+  color: #000000;
+  font-family: Poppins, sansSerif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 14;
+}
+
+.removeSensorField {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
+  gap: 10px;
+  position: relative;
+  padding: 10px 10px 10px 10px;
+  z-index: 17;
+}
+.removeSensorData {
+  flex-shrink: 0;
+  flex-basis: auto;
+  position: relative;
+  height: 21px;
+  color: #000000;
+  font-family: Poppins, sansSerif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 18;
+}
+.sensorStatusData {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
+  gap: 10px;
+  position: relative;
+  padding: 10px 10px 10px 10px;
+  z-index: 22;
+}
+.upDown {
+  flex-shrink: 0;
+  flex-basis: auto;
+  position: relative;
+  height: 21px;
+  color: #000000;
+  font-family: Poppins, sansSerif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 23;
+}

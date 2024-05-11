@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" />
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/map.css') }}">
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/global.css')}}" />
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <title>
+       The Map
+    </title>
+
+    <script>
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <div class="menu-bar">
+        <div class="khafeer-logo-white"></div>
+        <a href="{{ url_for('dashboard') }}"><span class="dashboard">Dashboard</span></a>
+        <span class="map">Map</span>
+        <a href="{{ url_for('manageSensor') }}"><span class="manage-sensors">Manage Sensors</span></a>
+       <a href="/"><span class="logout">Logout</span></a> 
+      </div>
+
+    <div style="display:inline-block;">
+        <div id="theMap">
+            <svg width="800" height="600" id="map" style="position: absolute;">
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                        <polygon points="3 3, 4 3.5, 3 4" style="stroke:black;fill:black;" />
+                    </marker>
+                </defs>
+
+                {% if roads|length > 0 %}
+                {% for road in roads %}
+                <line x1="{{road[0]}}" y1="{{road[1]}}" x2="{{road[2]}}" y2="{{road[3]}}"
+                    style="stroke:rgb(248, 248, 248);stroke-width:{{road[4]}}" />
+                {% endfor %}
+                {% endif %}
+
+                <!-- {% if not admin %}
+                {% if best_route|length > 0 %}
+                {% for step in best_route %}
+                <line x1="{{step[0]}}" y1="{{step[1]}}" x2="{{step[2]}}" y2="{{step[3]}}"
+                    style="stroke:rgb(0, 165, 0);stroke-width:10" marker-start="url(#arrowhead)" />
+                {% endfor %}
+                {% endif %}
+                {% endif %} -->
+                
+
+                {% if buildings|length > 0 %}
+                {% for building in buildings %}
+                <polygon
+                    points="{{building[0]}},{{building[1]}} {{building[2]}},{{building[3]}} {{building[4]}},{{building[5]}} {{building[6]}},{{building[7]}}"
+                    style="fill:rgb(173, 156, 0);stroke:purple;stroke-width:1" />
+                {% endfor %}
+                {% endif %}
+
+
+                {% if map_texts|length > 0 %}
+                {% for map_text in map_texts %}
+                <text text-anchor="middle"
+                    transform="translate({{map_text[0]}},{{map_text[1]}}) rotate({{map_text[2]}})">{{map_text[3]}}</text>
+                {% endfor %}
+                {% endif %}
+
+            </svg>
+
+            {% if points_map|length > 0 %}
+            {% for point in points_map %}
+            <button id="{{point[3]}}" class="{% if point[2] %}flooded{% endif %}"
+                style="position:absolute;width: 20px;height: 20px; top:{{point[1]-20/2}}px; left:{{point[0]-20/2}}px;"
+                onclick="point_pressed('{{point[3]}}')"></button>
+            {% endfor %}
+            {% endif %}
+
+
+
+        </div>
+
+
+
+
+    </div>
+
+    <div id = "controlButtons">
+
+        <!-- <button  id="toggle_start" class="button1" onclick="toggle_start()">Select Source</button> 
+        <br>
+        <button id="toggle_dest" class="button1" onclick="toggle_destination()">Select Destination</button> 
+        <br> -->
+        <button id="toggle_flood" class="button1" onclick="toggle_flood()">Click any point to toggle flood</button> <br>
+
+    </div>
+
+   
+</body>
+<script>
+    currently_selecting = 0; // 0 nothing , 1 assigning start , 2 assigning destingation , 3 toggling floods
+
+    pSrcIDatServer = "{{pSrcID}}"
+    pDstIDatServer = "{{pDstID}}"
+    pSrcID = "9"
+    pDstID = "10"
+    if (getCookie("pSrcID") != "" && getCookie("pSrcID") != "undefined") {
+        pSrcID = getCookie("pSrcID");
+    }
+    if (getCookie("pDstID") != "" && getCookie("pDstID") != "undefined") {
+        pDstID = getCookie("pDstID");
+    }
+    // {% if not admin %}
+    document.getElementById(pSrcID).classList.add("start");
+    document.getElementById(pDstID).classList.add("destination");
+    // {% endif %}
+    function point_pressed(point_id) {
+        if (currently_selecting == 3) { // 3 toggling floods
+
+            var postdata = "point_id=" + point_id;
+            var xhttp1 = new XMLHttpRequest();
+            xhttp1.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    if (this.responseText === "0") {
+                        window.location.replace("/map?pSrcID=" + pSrcID + "&pDstID=" + pDstID);
+                    }
+                }
+            };
+            xhttp1.open("POST", "/point_clicked?" + postdata);
+            xhttp1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp1.send();
+        }
+        // if (currently_selecting == 1) { // 1 assigning start
+        //     pSrcIDs = document.getElementsByClassName("start")
+        //     for (let i = 0; i < pSrcIDs.length; i++) {
+        //         pSrcIDs[i].classList.remove("start");
+        //     }
+        //     document.getElementById(point_id).classList.add("start");
+        //     document.cookie = "pSrcID" + "=" + point_id
+
+        //     window.location.replace("/map?pSrcID=" + point_id + "&pDstID=" + pDstID);
+
+        // }
+        // if (currently_selecting == 2) { // 2 assigning destination
+        //     pDstIDs = document.getElementsByClassName("destination")
+        //     for (let i = 0; i < pDstIDs.length; i++) {
+        //         pDstIDs[i].classList.remove("destination");
+        //     }
+        //     document.getElementById(point_id).classList.add("destination");
+        //     document.cookie = "pDstID" + "=" + point_id
+
+        //     window.location.replace("/map?pSrcID=" + pSrcID + "&pDstID=" + point_id);
+
+        // }
+
+    }
+    // function toggle_start() {
+    //     if (getCookie("assign_start") == "true") {
+    //         currently_selecting = 0;
+    //         document.cookie = "assign_start" + "=" + false;
+    //         document.getElementById("toggle_start").classList.remove("buttontoggle");
+    //     } else {
+    //         currently_selecting = 1;
+    //         document.getElementById("toggle_flood").classList.remove("buttontoggle");
+    //         document.getElementById("toggle_dest").classList.remove("buttontoggle");
+    //         document.getElementById("toggle_start").classList.add("buttontoggle");
+    //         document.cookie = "assign_flood" + "=" + false;
+    //         document.cookie = "assign_dest" + "=" + false;
+    //         document.cookie = "assign_start" + "=" + true;
+    //     }
+    // }
+    // function toggle_destination() {
+    //     if (getCookie("assign_dest") == "true") {
+    //         currently_selecting = 0;
+    //         document.cookie = "assign_dest" + "=" + false;
+    //         document.getElementById("toggle_dest").classList.remove("buttontoggle");
+    //     }
+    //     else {
+    //         currently_selecting = 2;
+    //         document.getElementById("toggle_start").classList.remove("buttontoggle");
+    //         document.getElementById("toggle_flood").classList.remove("buttontoggle");
+    //         document.getElementById("toggle_dest").classList.add("buttontoggle");
+    //         document.cookie = "assign_flood" + "=" + false;
+    //         document.cookie = "assign_start" + "=" + false;
+    //         document.cookie = "assign_dest" + "=" + true;
+    //     }
+    // }
+    function toggle_flood() {
+        if (getCookie("assign_flood") == "true") {
+            currently_selecting = 0;
+            document.cookie = "assign_flood" + "=" + false;
+            document.getElementById("toggle_flood").classList.remove("buttontoggle");
+        } else {
+            // document.getElementById("toggle_start").classList.remove("buttontoggle");
+            // document.getElementById("toggle_dest").classList.remove("buttontoggle");
+            document.getElementById("toggle_flood").classList.add("buttontoggle");
+            currently_selecting = 3;
+            // document.cookie = "assign_start" + "=" + false;
+            // document.cookie = "assign_dest" + "=" + false;
+            document.cookie = "assign_flood" + "=" + true;
+        }
+    }
+
+    // if (getCookie("assign_start") == "true") {
+    //     currently_selecting = 1;
+    //     document.getElementById("toggle_start").classList.add("buttontoggle");
+    //     document.cookie = "assign_dest" + "=" + false;
+    //     document.cookie = "assign_flood" + "=" + false;
+    //     document.cookie = "assign_start" + "=" + true;
+    // }
+    // if (getCookie("assign_dest") == "true") {
+    //     document.getElementById("toggle_dest").classList.add("buttontoggle");
+    //     currently_selecting = 2;
+    //     document.cookie = "assign_flood" + "=" + false;
+    //     document.cookie = "assign_start" + "=" + false;
+    //     document.cookie = "assign_dest" + "=" + true;
+    // }
+    if (getCookie("assign_flood") == "true") {
+        document.getElementById("toggle_flood").classList.add("buttontoggle");
+        currently_selecting = 3;
+        // document.cookie = "assign_start" + "=" + false;
+        // document.cookie = "assign_dest" + "=" + false;
+        document.cookie = "assign_flood" + "=" + true;
+    }
+
+    if (pSrcIDatServer != pSrcID || pDstIDatServer != pDstID) {
+        window.location.replace("/map?pSrcID=" + pSrcID + "&pDstID=" + pDstID);
+    }
+
+    best_route_string_return="{{best_route_string}}"
+    function check_path() {
+        var postdata = "best_route_string_return=" + best_route_string_return + "&pSrcID=" + pSrcID + "&pDstID=" + pDstID ;
+        
+        var xhttp1 = new XMLHttpRequest();
+        xhttp1.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                if (this.responseText === "-1") {
+                    window.location.replace("/map?pSrcID=" + pSrcID + "&pDstID=" + pDstID);
+                }else{
+                    setTimeout(function() { check_path(); }, 5000);
+                }
+            }
+        };        
+        xhttp1.open("POST", "/check_path?" + postdata);
+        xhttp1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp1.send();
+    }
+    setTimeout(function() { check_path(); }, 5000);
+    
+</script>
+
+</html>

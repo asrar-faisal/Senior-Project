@@ -1,0 +1,1139 @@
+
+.main-container {
+  position: relative;
+  width: 1280px;
+  height: 3127px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.dashboard{
+  font-weight: 700;
+}
+
+.firstSection {
+  position: relative;
+  width: 1159px;
+  height: 506px;
+  margin: 105.379px 0 0 58px;
+  z-index: 3;
+}
+.login-image {
+  position: absolute;
+  width: 619px;
+  height: 506px;
+  top: 0;
+  left: 540px;
+  background: url('../images/loginImage.png')
+    no-repeat center;
+  background-size: cover;
+  border-radius: 8px;
+}
+.login-rectangle {
+  position: relative;
+  width: 607px;
+  height: 508px;
+  margin: -1px 0 0 10px;
+  background: url('../images/loginRectangle.png')
+    no-repeat center;
+  background-size: cover;
+  z-index: 1;
+}
+.welcome-to-khafeer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  width: 361px;
+  height: 144px;
+  top: 103px;
+  left: 0;
+  color: #000000;
+  font-family: Poppins, sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 72px;
+  text-align: left;
+  text-overflow: initial;
+  z-index: 2;
+  overflow: hidden;
+}
+.innovative-solution {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  width: 517px;
+  height: 90px;
+  top: 267px;
+  left: 0;
+  color: rgba(0, 0, 0, 0.46);
+  font-family: Poppins, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  text-align: left;
+  z-index: 3;
+}
+.weather-updates {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  width: 519px;
+  height: 72px;
+  margin: 229px 0 0 387px;
+  color: #000000;
+  font-family: Poppins, sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 72px;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 78;
+}
+.real-time-weather {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  width: 417px;
+  height: 36px;
+  margin: 13px 0 0 440px;
+  color: rgba(0, 0, 0, 0.46);
+  font-family: Poppins, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 36px;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 77;
+}
+.weatherBoxes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 1069px;
+  height: 251px;
+  margin: 74px 0 0 106px;
+  z-index: 64;
+}
+.weather-box1 {
+  flex-shrink: 0;
+  position: relative;
+  width: 248px;
+  height: 251px;
+  font-size: 0px;
+  background: #295f81;
+  border: 1px solid #000000;
+  z-index: 36;
+  border-radius: 6px;
+  box-sizing: content-box;
+}
+.today-september {
+  display: block;
+  position: relative;
+  height: 24px;
+  margin: 13px 0 0 43px;
+  color: #ffffff;
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 45;
+}
+.temperature1 {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin: 1px 0 0 80px;
+  z-index: 47;
+}
+.number-29 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 96px;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  font-family: Poppins, sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 96px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 46;
+}
+.degree1 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: absolute;
+  width: 18px;
+  height: 21px;
+  top: 25px;
+  left: 80px;
+  color: #ffffff;
+  font-family: Overpass, sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 21px;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 47;
+}
+.cloudy1 {
+  display: block;
+  position: relative;
+  height: 30px;
+  margin: 0 0 0 86px;
+  color: #ffffff;
+  font-family: Poppins, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 48;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.wind1 {
+  position: relative;
+  width: 134px;
+  height: 21px;
+  margin: 23px 0 0 55px;
+  z-index: 43;
+}
+.split1 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 21px;
+  top: 0;
+  left: 63px;
+  color: #ffffff;
+  font-family: Raleway, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 21px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 37;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.windIcon1{
+  position: absolute;
+  width: 11.19%;
+  height: 67.3%;
+  top: 3.66%;
+  left: 0;
+  background: url('../images/windIcon.png')
+    no-repeat center;
+  background-size: 100% 100%;
+  z-index: 43;
+}
+.windText1 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 2px;
+  left: 20px;
+  color: #ffffff;
+  font-family: Overpass, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18.99px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 39;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.windSpeed1 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 2px;
+  left: 78px;
+  color: #ffffff;
+  font-family: Overpass, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18.99px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 40;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.hum1 {
+  position: relative;
+  width: 111px;
+  height: 22px;
+  margin: 11px 0 0 58px;
+  z-index: 44;
+}
+.split2 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 21px;
+  top: 0;
+  left: 60px;
+  color: #ffffff;
+  font-family: Raleway, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 21px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 38;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.humText1 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 3px;
+  left: 18px;
+  color: #ffffff;
+  font-family: Overpass, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18.99px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 42;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.humPerc1 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 3px;
+  left: 75px;
+  color: #ffffff;
+  font-family: Overpass, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18.99px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 41;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.humIcon1 {
+  position: absolute;
+  width: 9.33%;
+  height: 64.24%;
+  top: 28.32%;
+  left: 0;
+  background: url('../images/humidityIcon.png')
+    no-repeat center;
+  background-size: 100% 100%;
+  z-index: 44;
+}
+.weather-box-2 {
+  flex-shrink: 0;
+  position: relative;
+  width: 248px;
+  height: 251px;
+  font-size: 0px;
+  background: #295f81;
+  border: 1px solid #000000;
+  z-index: 50;
+  border-radius: 6px;
+  box-sizing: content-box;
+}
+.sunday-september {
+  display: block;
+  position: relative;
+  height: 24px;
+  margin: 13px 0 0 42px;
+  color: #ffffff;
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 51;
+}
+.temperature2 {
+  position: relative;
+  width: 78px;
+  height: 96px;
+  margin: 1px 0 0 91px;
+  z-index: 62;
+}
+.number-31 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 96px;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  font-family: Poppins, sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 96px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 52;
+}
+.degree2 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 21px;
+  top: 25px;
+  left: 65px;
+  color: #ffffff;
+  font-family: Overpass, sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 21px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 62;
+}
+.sunny {
+  display: block;
+  position: relative;
+  height: 30px;
+  margin: 0 0 0 91px;
+  color: #ffffff;
+  font-family: Poppins, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 53;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.wind2 {
+  position: relative;
+  width: 135px;
+  height: 21px;
+  margin: 23px 0 0 59px;
+  z-index: 60;
+}
+.split3 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 21px;
+  top: 0;
+  left: 64px;
+  color: #ffffff;
+  font-family: Raleway, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 21px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 54;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.windIcon2 {
+  position: absolute;
+  width: 11.11%;
+  height: 67.3%;
+  top: 3.18%;
+  left: 0;
+  background: url('../images/windIcon.png')
+    no-repeat center;
+  background-size: 100% 100%;
+  z-index: 60;
+}
+.windText2 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 2px;
+  left: 21px;
+  color: #ffffff;
+  font-family: Overpass, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18.99px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 56;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.windSpeed2 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 2px;
+  left: 79px;
+  color: #ffffff;
+  font-family: Overpass, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18.99px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 57;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.hum2 {
+  position: relative;
+  width: 113px;
+  height: 22px;
+  margin: 11px 0 0 61px;
+  z-index: 61;
+}
+.split4 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 21px;
+  top: 0;
+  left: 62px;
+  color: #ffffff;
+  font-family: Raleway, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 21px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 55;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.humText2 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 3px;
+  left: 20px;
+  color: #ffffff;
+  font-family: Overpass, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18.99px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 59;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.humPerc2 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 3px;
+  left: 77px;
+  color: #ffffff;
+  font-family: Overpass, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18.99px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 58;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.humIcon2 {
+  position: absolute;
+  width: 9.16%;
+  height: 64.24%;
+  top: 22.85%;
+  left: 0;
+  background: url('../images/humidityIcon.png')
+    no-repeat center;
+  background-size: 100% 100%;
+  z-index: 61;
+}
+.weather-box-3 {
+  flex-shrink: 0;
+  position: relative;
+  width: 248px;
+  height: 251px;
+  font-size: 0px;
+  background: #295f81;
+  border: 1px solid #000000;
+  z-index: 64;
+  border-radius: 6px;
+  box-sizing: content-box;
+}
+.monday-september {
+  display: block;
+  position: relative;
+  height: 24px;
+  margin: 13px 0 0 40px;
+  color: #ffffff;
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 73;
+}
+.temperature3 {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin: 1px 0 0 84px;
+  z-index: 76;
+}
+.number-28 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 96px;
+  top: 0;
+  left: 0;
+  color: #ffffff;
+  font-family: Poppins, sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 96px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 74;
+}
+.degree3 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 21px;
+  top: 25px;
+  left: 80px;
+  color: #ffffff;
+  font-family: Overpass, sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 21px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 76;
+}
+.cloudy2 {
+  display: block;
+  position: relative;
+  height: 30px;
+  margin: 0 0 0 86px;
+  color: #ffffff;
+  font-family: Poppins, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 75;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.wind3 {
+  position: relative;
+  width: 135px;
+  height: 21.128px;
+  margin: 24.872px 0 0 59px;
+  z-index: 71;
+}
+.windIcon3 {
+  position: absolute;
+  width: 11.11%;
+  height: 66.89%;
+  top: 0;
+  left: 0;
+  background: url('../images/windIcon.png')
+    no-repeat center;
+  background-size: 100% 100%;
+  z-index: 71;
+}
+.split5 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 21px;
+  top: 0.13px;
+  left: 64px;
+  color: #ffffff;
+  font-family: Raleway, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 21px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 65;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.windText3 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 2.128px;
+  left: 21px;
+  color: #ffffff;
+  font-family: Overpass, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18.99px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 67;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.windSpeed3 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 2.128px;
+  left: 79px;
+  color: #ffffff;
+  font-family: Overpass, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18.99px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 68;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.hum3 {
+  position: relative;
+  width: 113px;
+  height: 22px;
+  margin: 11px 0 0 61px;
+  z-index: 72;
+}
+.split6 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 21px;
+  top: 0;
+  left: 62px;
+  color: #ffffff;
+  font-family: Raleway, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 21px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 66;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.humText3 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 3px;
+  left: 20px;
+  color: #ffffff;
+  font-family: Overpass, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18.99px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 70;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.humPerc3 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 19px;
+  top: 3px;
+  left: 77px;
+  color: #ffffff;
+  font-family: Overpass, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18.99px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 69;
+  text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+}
+.humIcon3 {
+  position: absolute;
+  width: 9.16%;
+  height: 64.24%;
+  top: 24.24%;
+  left: 0;
+  background: url('../images/humidityIcon.png')
+    no-repeat center;
+  background-size: 100% 100%;
+  z-index: 72;
+}
+.viewAllButton1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 121px;
+  height: 53px;
+  margin: 58px 0 0 576px;
+  background: rgba(255, 255, 255, 0.56);
+  border: 1px solid #000000;
+  z-index: 34;
+  border-radius: 6px;
+  box-sizing: content-box;
+}
+.view-all1 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  width: 121px;
+  height: 28px;
+  color: #000000;
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 34;
+}
+.systemStatusSection {
+  position: relative;
+  width: 1122px;
+  height: 120px;
+  margin: 318px 0 0 81px;
+  z-index: 21;
+}
+.system-status {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 72px;
+  top: 0;
+  left: 0;
+  color: #000000;
+  font-family: Poppins, sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 72px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.firstNotif{
+  position: absolute;
+  width: 410px;
+  height: 101px;
+  top: 13px;
+  left: 712px;
+  border: 1px solid #000000;
+  background: url('../images/firstNotif.jpg')
+  no-repeat center;
+  z-index: 21;
+  border-radius: 6px;
+  box-sizing: content-box;
+}
+.secondNotif{
+  position: absolute;
+  width: 410px;
+  height: 101px;
+  top: 130px;
+  left: 712px;
+  border: 1px solid #000000;
+  background: url('../images/secondNotif.jpg')
+  no-repeat center;
+  z-index: 21;
+  border-radius: 6px;
+  box-sizing: content-box;
+}
+
+.track-changes {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 36px;
+  top: 84px;
+  left: 0;
+  color: rgba(0, 0, 0, 0.46);
+  font-family: Poppins, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 36px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 9;
+}
+
+.viewAllButton2{
+  flex-shrink: 0;
+  position: relative;
+  top: 150px;
+  width: 121px;
+  height: 53px;
+  background: #ffffff;
+  border: 1px solid #000000;
+  z-index: 30;
+  border-radius: 6px;
+  box-sizing: content-box;
+}
+.view-all2 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: absolute;
+  width: 121px;
+  height: 28px;
+  top: 13px;
+  left: 0;
+  color: #000000;
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 31;
+}
+
+.visionAndMissionBox {
+  position: relative;
+  width: 1345px;
+  height: 395px;
+  margin: 391px 0 0 -31px;
+  background: rgba(41, 95, 129, 0.8);
+  border: 1px solid #000000;
+  z-index: 80;
+  box-sizing: content-box;
+}
+.statementsRow {
+  position: absolute;
+  height: 284.119px;
+  top: 49px;
+  right: 210px;
+  left: 154px;
+  z-index: 84;
+}
+.vertical-line {
+  position: absolute;
+  width: 2px;
+  height: 284.119px;
+  top: 0px;
+  left: 50%;
+  background: url('../images/verticalLine.png')
+    no-repeat center;
+  background-size: cover;
+  transform: translate(1025%, 0);
+  z-index: 81;
+}
+.visionStatement {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: absolute;
+  width: 339px;
+  height: 150px;
+  top: 93px;
+  left: 0;
+  color: #ffffff;
+  font-family: Poppins, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  text-align: center;
+  z-index: 84;
+}
+.missionStatement {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: absolute;
+  width: 325px;
+  height: 90px;
+  top: 93px;
+  left: 656px;
+  color: #ffffff;
+  font-family: Poppins, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  text-align: center;
+  z-index: 82;
+}
+.vissionAndMissionRow{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  width: 810px;
+  height: 60px;
+  top: 60px;
+  left: 251px;
+  z-index: 85;
+}
+.vision {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  width: 145px;
+  height: 60px;
+  color: #ffffff;
+  font-family: Poppins, sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 60px;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 85;
+}
+.mission {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  width: 173px;
+  height: 60px;
+  color: #ffffff;
+  font-family: Poppins, sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 60px;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 83;
+}
+.bottom-line {
+  position: relative;
+  width: 1112.045px;
+  height: 3px;
+  margin: 247px 0 0 92.978px;
+  background: url('../images/horizontalLine.png')
+    no-repeat center;
+  background-size: cover;
+  z-index: 79;
+}
+.footer {
+  position: relative;
+  width: 1108px;
+  height: 23px;
+  margin: 17px 0 0 93px;
+  z-index: 8;
+}
+.khafeer-rights-reserved {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 23px;
+  top: 0;
+  left: 32px;
+  color: #000000;
+  font-family: Poppins, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 22.5px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 8;
+}
+.faqs {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 23px;
+  top: 0;
+  left: 740px;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: Poppins, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 22.5px;
+  text-align: left;
+  text-decoration: underline;
+  white-space: nowrap;
+  z-index: 7;
+}
+.terms-of-service {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 23px;
+  top: 0;
+  left: 832px;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: Poppins, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 22.5px;
+  text-align: left;
+  text-decoration: underline;
+  white-space: nowrap;
+  z-index: 6;
+}
+.privacy-policy {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  height: 23px;
+  top: 0;
+  left: 1006px;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: Poppins, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 22.5px;
+  text-align: left;
+  text-decoration: underline;
+  white-space: nowrap;
+  z-index: 5;
+}
+.copyright {
+  position: absolute;
+  width: 20px;
+  height: 18.234px;
+  top: 1.936px;
+  left: 0;
+  background: url('../images/copyright.png')
+    no-repeat center;
+  background-size: cover;
+  z-index: 4;
+}

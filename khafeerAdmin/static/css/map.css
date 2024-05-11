@@ -1,0 +1,80 @@
+
+#theMap{
+    position: relative;
+    top: 120px;
+    left: 220px;
+    width:800px;
+    height:600px;
+    background-color: #D3DFE4 ;
+    border: black solid 1px;
+     border-radius:5px ;
+     position: relative;
+}
+#controlButtons{
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    top: 60px;
+    right: 300px;
+    width: 300px;
+    height: 32px;
+}
+#toggle_start{
+    position: relative; 
+    right: -40px;
+}
+#toggle_dest{
+    position: relative;
+     right: -30px;
+}
+.map {
+    font-weight: 700;
+  }
+  #top_menu{
+    background: url('../images/menuBar.png') no-repeat center;
+    overflow: hidden;
+    padding-left: 10%;
+    padding-right: 1em;  
+}
+
+body {
+    /* Enable vertical scrolling */
+      overflow-y: scroll;
+      }
+      .flooded {
+          background-color: #6494AC;
+      }
+
+      .flooded:hover {
+          background-color: #AAC4D4;
+      }
+
+      .button1 {
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+          background-color: #18425D;
+          border-radius: 5px;
+      }
+
+      .button1:hover {
+          background-color: #6092AB;
+      }
+
+      /* .start {
+          background-color: black;
+      }
+
+      .destination {
+          background-color: black;
+      } */
+
+      .buttontoggle {
+          background-color: #295F81;
+      }

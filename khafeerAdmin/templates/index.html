@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- webpage is displayed properly with different screen sizes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" />
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}" />
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/global.css')}}" />
+  </head>
+  
+  <body>
+    <div class="main-container">
+      <div class="login-image"><div class="login-rectangle"></div></div>
+      <span class="khafeer-name">Khafeer</span>
+      <div class="content">
+        <div class="khafeer-logo-black"></div>
+        <span class="welcome">WELCOME</span>
+
+        <form method="POST">
+          <label class = "label" for="email">Email:</label>
+          <br>
+          <input type="email" name="email" id="email">
+          <br>
+          <label class = "label" for="password">Password:</label>
+          <br>
+          <input type="password" name="password" id="password">
+          <button id = "submit" type="submit">Login</button>
+        </form>
+        
+        <span class="forgot-password">Forgot Password?</span>
+        <p id="errormsg">{{ errormsg }}</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,154 @@
+
+.main-container,
+.main-container * {
+  box-sizing: border-box;
+}
+
+.main-container {
+  overflow: hidden;
+}
+body{
+  background-color: #EBEBEB;
+  margin: 0%;
+  height: 100%;
+  width: 100%;
+  padding: 0%;
+  overflow-x: hidden;
+}
+a{
+  text-decoration: none;
+}
+
+.menu-bar {
+  position: absolute;
+  width: 1280px;
+  height: 54px;
+  top: 0px;
+  left: 0;
+  background: url('../images/menuBar.png') no-repeat center;
+  background-size: cover;
+  z-index: 64;
+}
+
+.menu-bar span:hover{
+  color: #ececec;
+}
+.menu-bar span:active{
+  color: #e1e1e1;
+
+}
+.removeSensor{
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  color: red;
+}
+.sensors-table{
+  position: absolute;
+  top: 50px;
+}
+#addSensor{
+  background: #295F81;
+  box-shadow: none;
+  outline: none;
+  cursor: pointer;
+  color: white; 
+  position: absolute;
+  left: 80px;
+  top: 80px;
+  z-index: 70;
+}
+.floodStatus{
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+.sensorStatus{
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+.khafeer-logo-white {
+  position: relative;
+  width: 74px;
+  height: 37px;
+  top: 11px;
+  left: 30px;
+  background: url('../images/whiteLogo.png') no-repeat;
+  background-size: cover;
+  z-index: 69;
+}
+.dashboard {
+  position: relative;
+  width: 137.545px;
+  height: 29.869px;
+  bottom: 20px;
+  left: 880px;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 66;
+}
+
+.map {
+  position: relative;
+  width: 53.274px;
+  height: 29.869px;
+  bottom: 20px;
+  left: 910px;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 65;
+}
+.manage-sensors {
+  position: relative;
+  width: 185.976px;
+  height: 40.621px;
+  bottom: 20px;
+  left: 940px;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 67;
+}
+
+.logout {
+  position: relative;
+  width: 137.545px;
+  height: 29.869px;
+  bottom: 20px;
+  left: 960px;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 68;
+}
+
+/* to hide content outside element's boundries. Preventing scrollbars */
+/* .main-container {
+  position: relative;
+  width: 1280px;
+  height: 585.33px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.89);
+  overflow: hidden;
+  }
+   */
+
+  

@@ -1,0 +1,140 @@
+
+.login-image, .login-rectangle {
+  /* It doesn't affect the position of other elements, and other elements do not affect its position. */
+  position: absolute;
+  width: 506px;
+  height: 585px;
+  top: 0;
+  left: 774px;
+  /* Set a background image for the div with the class login-image, image displayed only once and centered horizontally. */
+  background: url('../images/loginImage.png')  no-repeat center;
+  /* background image covers the entire background area of the div while maintaining its aspect ratio. */
+  background-size: cover;
+  z-index: 8;
+  border-radius: 5px;
+}
+.login-rectangle {
+  top: 0;
+  left: 0;
+  background: url('../images/loginRectangle.png') no-repeat center;
+  background-size: cover;
+  /* above the image */
+  z-index: 9;
+}
+.khafeer-name {
+  position: absolute;
+  width: 182px;
+  height: 43px;
+  top: 15px;
+  left: 10px;
+  color: #000000;
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  font-weight: 300;
+  /* display a single line of text without allowing it to break onto multiple lines.*/
+  display: block;
+  white-space: nowrap;
+  z-index: 10;
+}
+.content {
+  position: absolute;
+  width: 463.587px;
+  height: 498px;
+  top: 56px;
+  left: 179px;
+  z-index: 11;
+}
+.khafeer-logo-black {
+  /* reltaive to content parent */
+  position: relative;
+  width: 176px;
+  height: 100px;
+  margin: 0 0 0 129px;
+  background: url('../images/balckLogo.png') no-repeat center;
+  background-size: cover;
+  z-index: 11;
+}
+.welcome {
+  position: relative;
+  height: 60px;
+  margin: 5px 0 0 117px;
+  color: #000000;
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  text-align: left;
+  display: block;
+  white-space: nowrap;
+  z-index: 7;
+}
+.label {
+  position: relative;
+  height: 30px;
+  margin: 23px 0 0 0;
+  color: #000000;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  text-align: left;
+  display: block;
+  white-space: nowrap;
+  z-index: 6;
+}
+input {
+  border: none; 
+  border-bottom: 1px solid #ccc; 
+  padding: 5px; 
+  margin-bottom: 10px; 
+  width: 100%; 
+  box-sizing: border-box; 
+  outline: none; 
+}
+#submit{
+  position: relative;
+  width: 337px;
+  height: 65px;
+  margin: 41px 0 0 46px;
+  /* change the mouse cursor to a pointing hand when hovering over an element */
+  cursor: pointer;
+  background: #295f81;
+  /* rounded corners */
+  border-radius: 5px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+#submit:hover{
+  background: #6092AB;
+}
+#submit:active{
+  background-color: #295F81;
+}
+
+.forgot-password {
+  position: relative;
+  width: 190.587px;
+  height: 23px;
+  margin: -112px 0 0 330px;
+  color: #000000;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  display: block;
+  white-space: nowrap;
+  z-index: 2;
+}
+#errormsg{
+  position: relative;
+  width: 190.587px;
+  height: 23px;
+  margin: -20px 0 0 0px;
+  color: #000000;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  display: block;
+  white-space: nowrap;
+  z-index: 2;
+}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Sensors</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="{{url_for('static',filename='css/manageSensor.css')}}" />
+
+  <link rel="stylesheet" href="{{url_for('static',filename='css/global.css')}}" />
+
+  <script>
+    function changeFlood(pointid, point_flood) {
+      console.log(pointid);
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("POST", "/changeFlood?pointid=" + pointid + "&point_flood=" + point_flood, true);
+      xhttp.send();
+      if (point_flood.localeCompare("open") == 0) {
+        console.log("a");
+        console.log(point_flood);
+        document.getElementById("div_btn_flood_open_" + pointid).style.display = "none";
+        document.getElementById("div_btn_flood_closed_" + pointid).style.display = "";
+      }
+      else {
+        console.log("b");
+        console.log(point_flood);
+        document.getElementById("div_btn_flood_open_" + pointid).style.display = "";
+        document.getElementById("div_btn_flood_closed_" + pointid).style.display = "none";
+      }
+    }
+
+
+    function changeSensor(pointid, point_sensor) {
+      console.log(pointid);
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("POST", "/changeSensor?pointid=" + pointid + "&point_sensor=" + point_sensor, true);
+      xhttp.send();
+      if (point_sensor.localeCompare("up") == 0) {
+        console.log("a");
+        console.log(point_sensor);
+        document.getElementById("div_btn_flood_up_" + pointid).style.display = "none";
+        document.getElementById("div_btn_flood_down_" + pointid).style.display = "";
+      }
+      else {
+        console.log("b");
+        console.log(point_sensor);
+        document.getElementById("div_btn_flood_up_" + pointid).style.display = "";
+        document.getElementById("div_btn_flood_down_" + pointid).style.display = "none";
+      }
+    }
+
+    function removeSensor(pointid) {
+      // Assuming you want to use XMLHttpRequest for the removal process
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("POST", "/removeSensor?pointid=" + pointid, true);
+      xhttp.send();
+
+      // Optionally, you can update the UI or perform other actions after removing the sensor
+      var sensorRow = document.getElementById("div_btn_remove_sensor_" + pointid).style.display = "none";
+    }
+
+    function addSensor() {
+      let intersection_name = prompt("Please enter the intersection name","Salah El-Din and Mohamed Makram");
+      // Assuming you want to use XMLHttpRequest for the removal process
+      
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function (){
+        if (this.readyState == 4){
+          location.reload();
+        }
+      }
+      
+      xhttp.open("POST", "/addSensor?intersection_name=" + intersection_name, true);      
+      xhttp.send();     
+      
+    }
+
+  </script>
+</head>
+
+<body>
+  <div class="main-container">
+
+    <div class="menu-bar">
+      <div class="khafeer-logo-white"></div>
+      <a href="{{ url_for('dashboard') }}"><span class="dashboard">Dashboard</span></a>
+      <a href="{{ url_for('map') }}"><span class="map">Map</span></a>
+      <span class="manage-sensors">Manage Sensors</span>
+      <a href="/"><span class="logout">Logout</span></a>
+    </div>
+
+    <!-- add sensor -->
+    <div id="addSensorButton">
+      <button id="addSensor" onclick="addSensor()">
+        <span id="addSensorText">Add Sensor</span>
+      </button>
+    </div>
+
+
+
+    <div class="sensors-table">
+
+      <!-- create the table head -->
+      <div class="table-head">
+        <div class="sensor-id-column">
+          <span class="sensor-id-location">Sensor ID / Location</span>
+        </div>
+
+        <div class="road-status-column">
+          <span class="road-status">Road Status</span>
+        </div>
+
+        <div class="sensor-status-column">
+          <span class="sensor-status">Sensor Status</span>
+        </div>
+
+        <div class="remove-sensor-column">
+          <span class="remove-sensor">Remove Sensor</span>
+        </div>
+      </div>
+      <!-- ------------------ -->
+      <!-- fill the table data, row by row -->
+      {% for item in sensors_data %}  
+
+      <!-- div for the row -->
+      <div id = "div_btn_remove_sensor_{{item[0]}}" class="row">
+
+        <div class="firstColumn"><span class="firstColumnData">{{item[0]}}/{{item[3]}}</span></div>
+
+        <!-- change flood -->
+        {% if item[1] == "open" %}
+
+        <div id="div_btn_flood_open_{{item[0]}}" class="floodStatusData">
+          <button class="floodStatus" style="width: 13ch;margin: 1ch;" onclick="changeFlood('{{item[0]}}','open')">
+            <span class="openClosedPending"><u>open</u> 🟢</span>
+          </button>
+        </div>
+
+        <div id="div_btn_flood_closed_{{item[0]}}" style="display:none;" class="floodStatusData">
+          <button class="floodStatus" style="width: 13ch;margin: 1ch;" onclick="changeFlood('{{item[0]}}','closed')">
+            <span class="openClosedPending"><u>Closed</u> 🔴</span>
+          </button>
+        </div>
+
+        {% endif %}
+
+
+        {% if item[1] == "closed" %}
+
+        <div id="div_btn_flood_open_{{item[0]}}" style="display: none;" class="floodStatusData">
+          <button class="floodStatus" style="width: 13ch;margin: 1ch;" onclick="changeFlood('{{item[0]}}','open')">
+            <span class="openClosedPending"><u>Open</u>🟢</span>
+          </button>
+
+        </div>
+        <div id="div_btn_flood_closed_{{item[0]}}" class="floodStatusData">
+          <button class="floodStatus" style="width: 13ch;margin: 1ch;" onclick="changeFlood('{{item[0]}}','closed')">
+            <span class="openClosedPending"><u>Closed</u> 🔴</span>
+          </button>
+        </div>
+        {% endif %}
+
+        {% if item[2] == "pending" %}
+        <div class="floodStatusData">
+            <span class="openClosedPending"><u>Pending</u>🕙</span>
+        </div>
+        {% endif %}
+
+        <!-- change status -->
+        {% if item[2] == "up" %}
+        <div id="div_btn_flood_up_{{item[0]}}" class="sensorStatusData">
+          <button class="sensorStatus" style="width: 13ch;margin: 1ch;" onclick="changeSensor('{{item[0]}}','up')">
+            <span class="upDown"><u>Up</u> 🟢</span>
+          </button>
+        </div>
+
+        <div id="div_btn_flood_down_{{item[0]}}" class="sensorStatusData" style="display: none;">
+          <button class="sensorStatus" style="width: 13ch;margin: 1ch;" onclick="changeSensor('{{item[0]}}','down')">
+            <span class="upDown"><u>Down</u> 🔴</span>
+          </button>
+        </div>
+        {% endif %}
+
+        {% if item[2] == "down" %}
+        <div id="div_btn_flood_up_{{item[0]}}" class="sensorStatusData" style="display: none;">
+          <button class="sensorStatus" style="width: 13ch;margin: 1ch;" onclick="changeSensor('{{item[0]}}','up')">
+            <span class="upDown"><u>Up</u> 🟢</span>
+          </button>
+        </div>
+
+        <div id="div_btn_flood_down_{{item[0]}}" class="sensorStatusData">
+          <button class="sensorStatus" style="width: 13ch;margin: 1ch;" onclick="changeSensor('{{item[0]}}','down')">
+            <span class="upDown"><u>Down</u> 🔴</span>
+          </button>
+        </div>
+        {% endif %}
+        <!-- ---- -->
+        
+        <div class="removeSensorField">
+          <span class="removeSensorData">
+            <button class = "removeSensor" onclick="removeSensor('{{item[0]}}')">
+              <u>Remove Sensor</u>
+              🗑️</button>
+          </span>
+        </div>
+
+      </div>
+      {% endfor %}
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400&display=swap" />
+
+  <link rel="stylesheet" href="{{url_for('static',filename='css/dashboard.css')}}" />
+
+  <link rel="stylesheet" href="{{url_for('static',filename='css/global.css')}}" />
+
+</head>
+
+<body>
+  <div class="main-container">
+
+    <div class="menu-bar">
+      <div class="khafeer-logo-white"></div>
+      <span class="dashboard">Dashboard</span>
+      <a href="{{ url_for('map') }}"><span class="map">Map</span></a>
+      <a href="{{ url_for('manageSensor') }}"><span class="manage-sensors">Manage Sensors</span></a>
+      <a href="/"><span class="logout">Logout</span></a>
+    </div>
+
+
+    <div class="firstSection">
+      <div class="login-image">
+        <div class="login-rectangle"></div>
+      </div>
+
+      <span class="welcome-to-khafeer">Welcome to <br />Khafeer</span>
+
+      <span class="innovative-solution">The innovative
+        solution to efficiently manage traffic flow during
+        flood situations, ensuring fast and flexible responses to protect
+        communities.</span>
+    </div>
+    <!-- --- -->
+
+    <span class="weather-updates">Weather updates</span>
+    <span class="real-time-weather">Access real-time weather updates</span>
+
+    <div class="weatherBoxes">
+
+      <div class="weather-box1">
+
+        <span class="today-september">Today, 12 September</span>
+
+        <div class="temperature1">
+          <span class="number-29">29</span>
+          <span class="degree1">°</span>
+        </div>
+        <span class="cloudy1">Cloudy</span>
+        <div class="wind1">
+          <span class="split1">|</span>
+          <div class="windIcon1"></div>
+          <span class="windText1">Wind</span>
+          <span class="windSpeed1">10 km/h</span>
+        </div>
+        <div class="hum1">
+          <span class="split2">|</span>
+          <span class="humText1">Hum</span>
+          <span class="humPerc1">54 %</span>
+          <div class="humIcon1"></div>
+        </div>
+
+      </div>
+
+
+      <div class="weather-box-2">
+        <span class="sunday-september">Sunday, 13 September</span>
+        <div class="temperature2">
+          <span class="number-31">31</span>
+          <span class="degree2">°</span>
+        </div>
+        <span class="sunny">Sunny</span>
+        <div class="wind2">
+          <span class="split3">|</span>
+          <div class="windIcon2"></div>
+          <span class="windText2">Wind</span>
+          <span class="windSpeed2">10 km/h</span>
+        </div>
+        <div class="hum2">
+          <span class="split4">|</span>
+          <span class="humText2">Hum</span>
+          <span class="humPerc2">54 %</span>
+          <div class="humIcon2"></div>
+        </div>
+      </div>
+
+      <div class="weather-box-3">
+        <span class="monday-september">Monday, 14 September</span>
+
+        <div class="temperature3">
+          <span class="number-28">28</span><span class="degree3">°</span>
+        </div>
+
+        <span class="cloudy2">Cloudy</span>
+
+        <div class="wind3">
+          <div class="windIcon3"></div>
+          <span class="split5">|</span>
+          <span class="windText3">Wind</span>
+          <span class="windSpeed3">10 km/h</span>
+        </div>
+
+        <div class="hum3">
+          <span class="split6">|</span>
+          <span class="humText3">Hum</span>
+          <span class="humPerc3">54
+            %</span>
+          <div class="humIcon3"></div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="viewAllButton1"><span class="view-all1">View All</span></div>
+
+
+    <!-- --- -->
+    <div class="systemStatusSection">
+      <span class="system-status">System status</span>
+      <span class="track-changes">Keep track of changes in the system </span>
+      <div class="viewAllButton2"><span class="view-all2">View All</span></div>
+      <div class="firstNotif"></div>
+      <div class="secondNotif"></div>
+    </div>
+
+
+    <div class="visionAndMissionBox">
+
+      <div class="vissionAndMissionRow">
+        <span class="vision">Vision</span><span class="mission">Mission</span>
+      </div>
+
+      <div class="statementsRow">
+        <div class="vertical-line"></div>
+        <span class="visionStatement">Envisioning a world where Khaffer is synonymous with proactive disaster
+          management, minimizing flood impact and ensuring community safety.</span>
+        <span class="missionStatement">Use cutting-edge technology to flood predictions and
+          ensure
+          coordinated responses.
+        </span>
+      </div>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br>
+    <div class="bottom-line"></div>
+    <div class="footer">
+      <span class="khafeer-rights-reserved">2024 Khafeer. All rights reserved.</span>
+      <span class="faqs">FAQ’s</span><span class="terms-of-service">Terms of Service</span>
+      <span class="privacy-policy">Privacy Policy</span>
+      <div class="copyright"></div>
+    </div>
+    
+  </div>
+</body>
+
+</html>
