@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap" />
+  <link rel="stylesheet" href="{{url_for('static',filename='css/global.css')}}" />
+  <link rel="stylesheet" href="{{url_for('static',filename='css/home.css')}}" />
+</head>
+
+<body>
+    
+
+    <div class="blue-rectangle">
+     <a class="logout" href="{{ url_for('index') }}">Logout</a> 
+      <div class="khafeer-logo-black"></div>
+      <span class="welcome-to-khafeer">Welcome to Khafeer</span>
+      <span class="innovative-solution">The innovative
+        solution to efficiently manage traffic flow during
+        flood situations, ensuring fast and flexible responses to protect
+        communities.</span>
+    </div>
+
+
+    
+
+    <div class="objectives">
+      <div class="line"></div>
+      <div class="line-1"></div>
+      <div class="line-2"></div>
+      <div class="line-3"></div>
+      <div class="line-4"></div>
+      <div class="line-5"></div>
+
+      <div class="icons">
+        <div class="traffic-icon"></div>
+        <div class="detection-icon"></div>
+        <div class="safety-icon"></div>
+      </div>
+
+    <span class="divert-traffic">Divert Traffic away from flooded areas</span>
+
+    <span class="early-flood-detection">early flood detection</span>
+      <span class="ensure-safety-commuters">ensure the
+      safety of commuters during flood</span>
+      <button class="to-map-button">
+        <a class="get-to-destination-safely" href="{{ url_for('map') }}">Get to your destination safely</a>
+      </button>
+  
+  </div>
+
+ 
+    <div class="orange-rectangle">
+
+      <div class="form">
+
+        <div class="name-rectangle"><span class="name">Name</span></div>
+        <div class="email-rectangle"><span class="email">Email</span></div>
+        <div class="phone-rectangle"><span class="phone">Phone</span></div>
+        <div class="message-rectangle">
+          <span class="message">Message</span>
+        </div>
+        <button class="send-button"><span class="send">Send</span></button>
+
+      </div>
+
+
+
+      <div class="formText">
+        <span class="contact-us">contact us</span>
+        <span class="inquiry-contact">If you have an inquiry, please don't hesitate to contact us.</span>
+      </div>
+
+
+    </div>
+
+
+
+    <footer>
+      <span class="privacy-policy">Privacy Policy</span><span class="terms-of-service">Terms of service</span>
+      <span class="all-rights-reserved">&copy; 2024 Khafeer. All rights reserved.</span>
+    </footer>
+
+</body>
+
+</html>

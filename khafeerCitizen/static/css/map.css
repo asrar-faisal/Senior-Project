@@ -1,0 +1,113 @@
+body {
+    background-image: url("/static/images/flood.jpeg");
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-color: rgba(255, 255, 255, 0.9); /* Adjust the alpha value for transparency (0.9 for 90% opacity) */
+    opacity: 0.8; /* Apply overall transparency to the body */
+}
+
+/*
+body {
+    background-color: #587899;
+}*/
+
+
+#theMap{
+    position: relative;
+    top: 60px;
+    left: 15px;
+    width:800px;
+    height:600px;
+    background-color: #D3DFE4 ;
+    border: black solid 1px;
+    border-radius:5px ;
+    position: relative;
+    border-width: 3px;
+    border-color: black;
+    border-style: solid;
+     
+}
+#safemessage{
+  text-align: left;
+  position: absolute;
+  vertical-align: top;
+  top: 100px;
+  right: 50px;  
+  left: 865px;
+  background-color: rgba(95, 158, 160, 0.594);
+  font-size: 18px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  padding: 10px;
+  height: 200px;
+  width: 360px;
+  border-radius: 10px;
+  border-width: 3px;
+  border-color: black;
+  border-style: solid;
+}
+
+#controlButtons{
+  position: absolute;
+  left: 930px;
+  top: 500px;
+    
+}
+#toggle_start{
+    position: relative; 
+    right: -40px;
+}
+#toggle_dest{
+    position: relative;
+     right: -30px;
+}
+
+
+body {
+    /* Enable vertical scrolling */
+      overflow-y: scroll;
+      background-color:azure;
+      .flooded {
+          background-color: #6494AC;
+      }
+
+      .flooded:hover {
+          background-color: #AAC4D4;
+      }
+
+      .button1 {
+          border: none;
+          color: rgb(0, 0, 0);
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 20px;
+          font-weight: bold;
+          margin: 4px 2px;
+          top: -65px;
+          left: 10px;
+          cursor: pointer;
+          background-color: rgba(95, 158, 160, 0.742);
+          border-radius: 5px;
+          border-width: 3px;
+          border-color: black;
+          border-style: solid;
+      }
+
+      .button1:hover {
+          background-color: #6092AB;
+      }
+
+      .start {
+          background-color: black;
+      }
+
+      .destination {
+          background-color: black;
+      }
+
+      .buttontoggle {
+          background-color: #000000;
+          color: white;
+      }

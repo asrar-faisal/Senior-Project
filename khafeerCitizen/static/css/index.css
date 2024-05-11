@@ -1,0 +1,135 @@
+.login-image {
+  position: absolute;
+  width: 673.8px;
+  height: 504px;
+  top: 38px;
+  left: 562px;
+  background: url('../images/loginImage.png') no-repeat center;
+  background-size: cover;
+}
+
+body{
+  background-color:azure;
+}
+
+.log-in {
+  position: absolute;
+  width: 162px;
+  height: 56px;
+  top: 95px;
+  left: 260px;
+  color: #041023;
+  font-size: 48px;
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.labelPhone{
+  position: absolute;
+  width: 74px;
+  height: 14px;
+  top: 222px;
+  left: 168px;
+  color: rgba(0, 0, 0, 0.46);
+  font-size: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+} 
+.labelPassword{
+  position: absolute;
+  width: 53px;
+  height: 14px;
+  top: 312px;
+  left: 168px;
+  color: rgba(0, 0, 0, 0.46);
+  font-size: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+input{
+  width: 330px;
+  height: 45px;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  background-color: transparent;
+}
+
+
+#phone{
+  position: absolute;
+  top: 216px;
+  left: 159px;
+}
+#password{
+  position: absolute;
+  top: 306px;
+  left: 159px;
+}
+
+.continue-guest {
+  position: absolute;
+  text-align: center;
+  width:250px;
+  height: 45px;
+  top: 500px;
+  left: 200px;
+  background-color: rgba(156, 196, 210, 0.658);
+  font-size: 15px;
+  font-weight: 400;
+}
+.forgot-password {
+  position: absolute;
+  width: 82px;
+  height: 11px;
+  top: 360px;
+  left: 407px;
+  color: #000000;
+  font-size: 10px;
+  font-weight: 400;
+}
+#loginButton {
+  position: absolute;
+  width: 116px;
+  height: 32px;
+  top: 375px;
+  left: 266px;
+  cursor: pointer;
+  background: #2b579e;
+  border: none;
+  z-index: 4;
+  border-radius: 3px;
+  color: white;
+}
+.dont-have-account {
+  position: relative;
+  color: #000000;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  left: 150px;
+  top: 385px;
+}
+.sign-up {
+  position: relative;
+  color: rgb(46, 61, 171);
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: underline;
+  left: 265px;
+  top: 385px;
+}
+
+#errormsg{
+  position: absolute;
+  width: 190.587px;
+  height: 23px;
+  margin: -20px 0 0 0px;
+  color: red;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  display: block;
+  white-space: nowrap;
+  top: 500px;
+  left: 200px;
+}

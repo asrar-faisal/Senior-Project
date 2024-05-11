@@ -1,0 +1,571 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{url_for('static',filename='css/global.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static',filename='css/map.css')}}" />
+    <title>Map</title>
+    
+
+    <script>
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+    // Function to request location permission if not already granted
+    function requestLocationPermissionIfNeeded() {
+        if (!isLocationPermissionGranted()) {
+            const permission = window.confirm("This website wants to use your location. Do you allow?");
+        
+            if (permission) {
+                // User clicked OK (Allow)
+                grantLocationPermission();
+            } else {
+                // User clicked Cancel (Deny)
+                handleLocationDenied();
+            }
+        }
+    }
+
+    // Function to check if location permission is already granted
+    function isLocationPermissionGranted() {
+        return localStorage.getItem('locationPermission') === 'granted';
+    }
+
+    // Function to grant location permission
+    function grantLocationPermission() {
+        localStorage.setItem('locationPermission', 'granted');
+    }
+
+
+    // Function to handle location permission denied
+    function handleLocationDenied() {
+        // Do something when user denies location permission
+        console.log('Location permission denied.');
+    }
+
+    // Prompt for location permission if needed when the page loads
+    requestLocationPermissionIfNeeded();
+});
+
+    </script>
+  </head>
+  <body>
+    <a class="logout" href="{{ url_for('index') }}">Logout</a> 
+    <div class="khafeer-logo-black"></div>
+
+  
+    <div style="display:inline-block;">
+        <div id="theMap">
+            <svg width="800" height="600" id="map" style="position: absolute;">
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                        <polygon points="3 3, 4 3.5, 3 4" style="stroke:black;fill:black;" />
+                    </marker>
+                </defs>
+
+                {% if roads|length > 0 %}
+                {% for road in roads %}
+                <line x1="{{road[0]}}" y1="{{road[1]}}" x2="{{road[2]}}" y2="{{road[3]}}"
+                    style="stroke:rgb(248, 248, 248);stroke-width:{{road[4]}}" />
+                {% endfor %}
+                {% endif %}
+
+                {% if best_route|length > 0 %}
+                {% for step in best_route %}
+                <line x1="{{step[0]}}" y1="{{step[1]}}" x2="{{step[2]}}" y2="{{step[3]}}"
+                    style="stroke:rgb(0, 165, 0);stroke-width:10" marker-start="url(#arrowhead)" />
+                {% endfor %}
+                {% endif %}
+
+
+                {% if buildings|length > 0 %}
+                {% for building in buildings %}
+                <polygon
+                    points="{{building[0]}},{{building[1]}} {{building[2]}},{{building[3]}} {{building[4]}},{{building[5]}} {{building[6]}},{{building[7]}}"
+                    style="fill:rgb(173, 156, 0);stroke:purple;stroke-width:1" />
+                {% endfor %}
+                {% endif %}
+
+
+                {% if map_texts|length > 0 %}
+                {% for map_text in map_texts %}
+                <text text-anchor="middle"
+                    transform="translate({{map_text[0]}},{{map_text[1]}}) rotate({{map_text[2]}})">{{map_text[3]}}</text>
+                {% endfor %}
+                {% endif %}
+
+            </svg>
+
+            {% if points_map|length > 0 %}
+            {% for point in points_map %}
+            <button id="{{point[3]}}" class="{% if point[2] %}flooded{% endif %}"
+                style="position:absolute;width: 20px;height: 20px; top:{{point[1]-20/2}}px; left:{{point[0]-20/2}}px;"
+                onclick="point_pressed('{{point[3]}}')"></button>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+
+
+
+    </div>
+
+  <div id = "controlButtons">
+
+    <button id="toggle_dest" class="button1" onclick="toggle_destination()">Select Destination</button>
+
+</div>
+  </body>
+  <!-- <script>
+    currently_selecting = 0; // 0 nothing, 1 assigning start, 2 assigning destination, 3 toggling floods
+
+    pSrcIDatServer = "{{pSrcID}}";
+    pDstIDatServer = "{{pDstID}}";
+    pSrcID = "9"; // Default start point ID
+    pDstID = ""; // Initialize destination point ID as empty
+
+    // Check if start and destination IDs are stored in cookies or URL parameters
+    if (getCookie("pSrcID") !== "" && getCookie("pSrcID") !== "undefined") {
+        pSrcID = getCookie("pSrcID");
+    }
+    if (getCookie("pDstID") !== "" && getCookie("pDstID") !== "undefined") {
+        pDstID = getCookie("pDstID");
+    }
+
+    // Set the start point ID cookie and update the corresponding button class
+    document.getElementById(pSrcID).classList.add("start");
+    document.cookie = "pSrcID=" + pSrcID;
+
+    // Only set the destination point ID cookie if it's not empty
+    if (pDstID !== "") {
+        document.getElementById(pDstID).classList.add("destination");
+        document.cookie = "pDstID=" + pDstID;
+    }
+
+    function point_pressed(point_id) {
+        if (currently_selecting === 1) { // Assigning start
+            // Remove 'start' class from all elements
+            document.querySelectorAll('.start').forEach(function(el) {
+                el.classList.remove("start");
+            });
+            // Add 'start' class to the selected point
+            document.getElementById(point_id).classList.add("start");
+            // Update the cookie with the new start point ID
+            document.cookie = "pSrcID=" + point_id;
+            // Reload the page with updated parameters
+            window.location.replace("/map?pSrcID=" + point_id + "&pDstID=" + pDstID);
+        }
+        if (currently_selecting === 2) { // Assigning destination
+            // Remove 'destination' class from all elements
+            document.querySelectorAll('.destination').forEach(function(el) {
+                el.classList.remove("destination");
+            });
+            // Add 'destination' class to the selected point
+            document.getElementById(point_id).classList.add("destination");
+            // Update the cookie with the new destination point ID
+            document.cookie = "pDstID=" + point_id;
+            // Reload the page with updated parameters
+            window.location.replace("/map?pSrcID=" + pSrcID + "&pDstID=" + point_id);
+        }
+    }
+
+    function toggle_destination() {
+        if (currently_selecting === 2) { // If already assigning destination, toggle off
+            currently_selecting = 0;
+            document.cookie = "assign_dest=false";
+            document.getElementById("toggle_dest").classList.remove("buttontoggle");
+        } else { // Toggle on assigning destination
+            currently_selecting = 2;
+            document.getElementById("toggle_dest").classList.add("buttontoggle");
+            document.cookie = "assign_dest=true";
+            // Also turn off other toggles if they are active
+            document.cookie = "assign_start=false";
+            document.cookie = "assign_flood=false";
+            document.getElementById("toggle_start").classList.remove("buttontoggle");
+            document.getElementById("toggle_flood").classList.remove("buttontoggle");
+        }
+    }
+
+    // Check and update the path periodically
+    function check_path() {
+        var postdata = "best_route_string_return=" + best_route_string_return + "&pSrcID=" + pSrcID + "&pDstID=" + pDstID;
+        
+        var xhttp1 = new XMLHttpRequest();
+        xhttp1.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                if (this.responseText === "-1") {
+                    window.location.replace("/map?pSrcID=" + pSrcID + "&pDstID=" + pDstID);
+                } else {
+                    setTimeout(function() { check_path(); }, 5000);
+                }
+            }
+        };        
+        xhttp1.open("POST", "/check_path?" + postdata);
+        xhttp1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp1.send();
+    }
+    setTimeout(function() { check_path(); }, 5000);
+</script> -->
+<!-- 
+<script>
+    currently_selecting = 0; // 0 nothing, 1 assigning start, 2 assigning destination, 3 toggling floods
+
+    pSrcIDatServer = "{{pSrcID}}";
+    pDstIDatServer = "{{pDstID}}";
+    pSrcID = "9"; // Default start point ID
+    pDstID = ""; // Initialize destination point ID as empty
+
+    // reset the desination point color
+    if (pDstID === "") {
+        resetDestinationPointVisualState();
+    } else {
+        setDestinationPointVisualState(pDstID);
+    }
+
+     // Function to reset destination point visual state
+     function resetDestinationPointVisualState() {
+        document.querySelectorAll('.destination').forEach(function(el) {
+            el.classList.remove("destination");
+            el.style.backgroundColor = ""; // removes the styling
+        });
+    }
+
+    // Function to set visual state for a specific destination point
+    function setDestinationPointVisualState(point_id) {
+        document.getElementById(point_id).classList.add("destination");
+        document.getElementById(point_id).style.backgroundColor = "black";
+    }
+
+
+    // Check if start and destination IDs are stored in cookies or URL parameters
+    if (getCookie("pSrcID") !== "" && getCookie("pSrcID") !== "undefined") {
+        pSrcID = getCookie("pSrcID");
+    }
+    if (getCookie("pDstID") !== "" && getCookie("pDstID") !== "undefined") {
+        pDstID = getCookie("pDstID");
+    }
+
+    // Set the start point ID cookie and update the corresponding button class
+    document.getElementById(pSrcID).classList.add("start");
+    document.cookie = "pSrcID=" + pSrcID;
+
+   
+    function point_pressed(point_id) {
+        if (currently_selecting === 1) { // Assigning start
+            // Remove 'start' class from all elements
+            document.querySelectorAll('.start').forEach(function(el) {
+                el.classList.remove("start");
+            });
+            // Add 'start' class to the selected point
+            document.getElementById(point_id).classList.add("start");
+            // Update the cookie with the new start point ID
+            document.cookie = "pSrcID=" + point_id;
+            // Reload the page with updated parameters
+            window.location.replace("/map?pSrcID=" + point_id + "&pDstID=" + pDstID);
+        }
+        if (currently_selecting === 2) { // Assigning destination
+            // Reset previous destination point visual state
+            resetDestinationPointVisualState();
+            // Set visual state for the selected destination point
+            setDestinationPointVisualState(point_id);
+            // Update the cookie with the new destination point ID
+            document.cookie = "pDstID=" + point_id;
+            // Reload the page with updated parameters
+            window.location.replace("/map?pSrcID=" + pSrcID + "&pDstID=" + point_id);
+        }
+    }
+
+    function toggle_destination() {
+        if (currently_selecting === 2) { // If already assigning destination, toggle off
+            currently_selecting = 0;
+            document.cookie = "assign_dest=false";
+            document.getElementById("toggle_dest").classList.remove("buttontoggle");
+        } else { // Toggle on assigning destination
+            currently_selecting = 2;
+            document.getElementById("toggle_dest").classList.add("buttontoggle");
+            document.cookie = "assign_dest=true";
+            // Also turn off other toggles if they are active
+            document.cookie = "assign_start=false";
+            document.cookie = "assign_flood=false";
+            document.getElementById("toggle_start").classList.remove("buttontoggle");
+        }
+    }
+
+    // Check and update the path periodically
+    function check_path() {
+        var postdata = "best_route_string_return=" + best_route_string_return + "&pSrcID=" + pSrcID + "&pDstID=" + pDstID;
+        
+        var xhttp1 = new XMLHttpRequest();
+        xhttp1.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                if (this.responseText === "-1") {
+                    window.location.replace("/map?pSrcID=" + pSrcID + "&pDstID=" + pDstID);
+                } else {
+                    setTimeout(function() { check_path(); }, 5000);
+                }
+            }
+        };        
+        xhttp1.open("POST", "/check_path?" + postdata);
+        xhttp1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp1.send();
+    }
+    setTimeout(function() { check_path(); }, 5000);
+</script>
+
+
+</html> --> 
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{url_for('static',filename='css/global.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static',filename='css/map.css')}}" />
+    <title>Map</title>
+    
+
+    <script>
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+    // Function to request location permission if not already granted
+    function requestLocationPermissionIfNeeded() {
+        if (!isLocationPermissionGranted()) {
+            const permission = window.confirm("This website wants to use your location. Do you allow?");
+        
+            if (permission) {
+                // User clicked OK (Allow)
+                grantLocationPermission();
+            } else {
+                // User clicked Cancel (Deny)
+                handleLocationDenied();
+            }
+        }
+    }
+
+    // Function to check if location permission is already granted
+    function isLocationPermissionGranted() {
+        return localStorage.getItem('locationPermission') === 'granted';
+    }
+
+    // Function to grant location permission
+    function grantLocationPermission() {
+        localStorage.setItem('locationPermission', 'granted');
+    }
+
+
+    // Function to handle location permission denied
+    function handleLocationDenied() {
+        // Do something when user denies location permission
+        console.log('Location permission denied.');
+    }
+
+    // Prompt for location permission if needed when the page loads
+    requestLocationPermissionIfNeeded();
+});
+
+    </script>
+  </head>
+  <body>
+    <a class="logout" href="{{ url_for('index') }}">&nbsp;Logout&nbsp;</a> 
+    <div class="khafeer-logo-black"></div>
+
+  
+    <div style="display:inline-block;">
+        <div id="theMap">
+            <svg width="800" height="600" id="map" style="position: absolute;">
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                        <polygon points="3 3, 4 3.5, 3 4" style="stroke:black;fill:black;" />
+                    </marker>
+                </defs>
+
+                {% if roads|length > 0 %}
+                {% for road in roads %}
+                <line x1="{{road[0]}}" y1="{{road[1]}}" x2="{{road[2]}}" y2="{{road[3]}}"
+                    style="stroke:rgb(248, 248, 248);stroke-width:{{road[4]}}" />
+                {% endfor %}
+                {% endif %}
+
+                {% if best_route|length > 0 %}
+                {% for step in best_route %}
+                <line x1="{{step[0]}}" y1="{{step[1]}}" x2="{{step[2]}}" y2="{{step[3]}}"
+                    style="stroke:rgb(0, 165, 0);stroke-width:10" marker-start="url(#arrowhead)" />
+                {% endfor %}
+                {% endif %}
+
+
+                {% if buildings|length > 0 %}
+                {% for building in buildings %}
+                <polygon
+                    points="{{building[0]}},{{building[1]}} {{building[2]}},{{building[3]}} {{building[4]}},{{building[5]}} {{building[6]}},{{building[7]}}"
+                    style="fill:rgb(173, 156, 0);stroke:purple;stroke-width:1" />
+                {% endfor %}
+                {% endif %}
+                {% if map_texts|length > 0 %}
+                {% for map_text in map_texts %}
+                <text text-anchor="middle"
+                    transform="translate({{map_text[0]}},{{map_text[1]}}) rotate({{map_text[2]}})">{{map_text[3]}}</text>
+                {% endfor %}
+                {% endif %}
+
+            </svg>
+
+            {% if points_map|length > 0 %}
+            {% for point in points_map %}
+            <button id="{{point[3]}}" class="{% if point[2] %}flooded{% endif %}"
+                style="position:absolute; width: 20px; height: 20px; top:{{point[1]-20/2}}px; left:{{point[0]-20/2}}px;"
+                onclick="point_pressed('{{point[3]}}')"></button>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+
+
+
+    </div>
+  <div id = "controlButtons">
+
+    <button id="toggle_dest" class="button1" onclick="toggle_destination()">Select Destination</button>
+
+</div>
+
+<p id="safemessage"><strong><u>NOTE:</u></strong> Blue points are closed, and not safe <br><br>But dont worry!<br><br>1- Enable your location (done)<br><br>2- Click on "Select destination" button <br><br>3- Choose your destination point on the map</p>
+
+
+<script>
+    currently_selecting = 0; // 0 nothing, 1 assigning start, 2 assigning destination, 3 toggling floods
+
+    pSrcIDatServer = "{{pSrcID}}";
+    pDstIDatServer = "{{pDstID}}";
+    pSrcID = "9"; // Default start point ID
+    pDstID = ""; // Initialize destination point ID as empty
+
+    // reset the desination point color
+    if (pDstID === "") {
+        resetDestinationPointVisualState();
+    } else {
+        setDestinationPointVisualState(pDstID);
+    }
+
+     // Function to reset destination point visual state
+     function resetDestinationPointVisualState() {
+        document.querySelectorAll('.destination').forEach(function(el) {
+            el.classList.remove("destination");
+            el.style.backgroundColor = ""; // removes the styling
+        });
+    }
+
+    // Function to set visual state for a specific destination point
+    function setDestinationPointVisualState(point_id) {
+        document.getElementById(point_id).classList.add("destination");
+        document.getElementById(point_id).style.backgroundColor = "black";
+    }
+
+
+    // Check if start and destination IDs are stored in cookies or URL parameters
+    if (getCookie("pSrcID") !== "" && getCookie("pSrcID") !== "undefined") {
+        pSrcID = getCookie("pSrcID");
+    }
+    if (getCookie("pDstID") !== "" && getCookie("pDstID") !== "undefined") {
+        pDstID = getCookie("pDstID");
+    }
+
+    // Set the start point ID cookie and update the corresponding button class
+    document.getElementById(pSrcID).classList.add("start");
+    document.cookie = "pSrcID=" + pSrcID;
+    function point_pressed(point_id) {
+        if (currently_selecting === 1) { // Assigning start
+            // Remove 'start' class from all elements
+            document.querySelectorAll('.start').forEach(function(el) {
+                el.classList.remove("start");
+            });
+            // Add 'start' class to the selected point
+            document.getElementById(point_id).classList.add("start");
+            // Update the cookie with the new start point ID
+            document.cookie = "pSrcID=" + point_id;
+            // Reload the page with updated parameters
+            window.location.replace("/map?pSrcID=" + point_id + "&pDstID=" + pDstID);
+        }
+        if (currently_selecting === 2) { // Assigning destination
+            // Reset previous destination point visual state
+            resetDestinationPointVisualState();
+            // Set visual state for the selected destination point
+            setDestinationPointVisualState(point_id);
+            // Update the cookie with the new destination point ID
+            document.cookie = "pDstID=" + point_id;
+            // Reload the page with updated parameters
+            window.location.replace("/map?pSrcID=" + pSrcID + "&pDstID=" + point_id);
+        }
+    }
+
+    function toggle_destination() {
+        if (currently_selecting === 2) { // If already assigning destination, toggle off
+            currently_selecting = 0;
+            document.cookie = "assign_dest=false";
+            document.getElementById("toggle_dest").classList.remove("buttontoggle");
+        } else { // Toggle on assigning destination
+            currently_selecting = 2;
+            document.getElementById("toggle_dest").classList.add("buttontoggle");
+            document.cookie = "assign_dest=true";
+            // Also turn off other toggles if they are active
+            document.cookie = "assign_start=false";
+            document.cookie = "assign_flood=false";
+            document.getElementById("toggle_start").classList.remove("buttontoggle");
+        }
+    }
+
+    // Check and update the path periodically
+    function check_path() {
+        var postdata = "best_route_string_return=" + best_route_string_return + "&pSrcID=" + pSrcID + "&pDstID=" + pDstID;
+        
+        var xhttp1 = new XMLHttpRequest();
+        xhttp1.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                if (this.responseText === "-1") {
+                    window.location.replace("/map?pSrcID=" + pSrcID + "&pDstID=" + pDstID);
+                    } else {
+                    setTimeout(function() { check_path(); }, 5000);
+                }
+            }
+        };        
+        xhttp1.open("POST", "/check_path?" + postdata);
+        xhttp1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp1.send();
+    }
+    setTimeout(function() { check_path(); }, 5000);
+</script>
+  </body>
+ 
+
+
+
+</html>

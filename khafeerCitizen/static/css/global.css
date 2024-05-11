@@ -1,0 +1,28 @@
+body{
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+  }
+.khafeer-logo-black{
+  position: absolute;
+  width: 50px;
+  height: 39px;
+  top: 10px;
+  right: 90px;
+  background: url('../images/balckLogo.png') no-repeat center;
+  background-size: cover;
+}
+
+.logout{
+  position: absolute;
+  top: 15px;
+  left: 50px;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+}
+.logout:hover{
+  color: rgba(0, 0, 0, 0.46);
+}
+.logout:active{
+  color: rgba(0, 0, 0, 0.60);
+}

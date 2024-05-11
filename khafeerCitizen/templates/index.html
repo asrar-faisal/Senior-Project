@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arial:wght@400&display=swap" />
+  <link rel="stylesheet" href="{{url_for('static',filename='css/global.css')}}" />
+  <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}" />
+  <script>
+    // to empty the permission ONLY when the app first load, not when the map page is load
+    localStorage.setItem('locationPermission', ' ');
+  </script>
+ 
+</head>
+
+<body>
+  <div class="khafeer-logo-black"></div>
+    <div class="login-image"></div>
+    <span class="log-in">Login</span>
+
+    <form method="POST">
+      <label class="labelPhone" for="phone">Mobile Phone:</label>
+      <br>
+      <input type="tel" name="phone" id="phone" pattern="05[0-9]{8}" title="Phone number must start with '05' and be 10 digits long" required>
+      <br>
+      <label class="labelPassword" for="password">Password:</label>
+      <br>
+      <input type="password" name="password" id="password" pattern=".{8,}" title="Password must be at least 8 characters long" required>
+      <button id="loginButton" type="submit">Login</button>
+    </form>
+
+    <a class="continue-guest" href= "{{ url_for('map') }}">Stuck? Click here to continue as guest</a>
+    <span class="forgot-password">Forgot Password?</span>
+
+    <p id="errormsg">{{ errormsg }}</p>
+    <span class="dont-have-account">Don’t have an account? </span>
+    <a class="sign-up" href= "{{ url_for('signup') }}">Sign up</a>
+</body>
+
+</html>

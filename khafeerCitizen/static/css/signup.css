@@ -1,0 +1,155 @@
+.login-image {
+  position: absolute;
+  width: 673.8px;
+  height: 504px;
+  top: 38px;
+  left: 562px;
+  background: url('../images/loginImage.png') no-repeat center;
+  background-size: cover;
+}
+
+body{
+  background-color:azure;
+}
+
+.sign-up {
+  position: absolute;
+  width: 162px;
+  height: 56px;
+  top: 95px;
+  left: 230px;
+  color: #041023;
+  font-size: 48px;
+  font-weight: bold;
+  white-space: nowrap;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.sms{
+  position: absolute;
+  width: 162px;
+  height: 56px;
+  top: 160px;
+  left: 243px;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.labelName{
+  position: absolute;
+  width: 53px;
+  height: 14px;
+  top: 204px;
+  left: 168px;
+  color: rgba(0, 0, 0, 0.46);
+  font-size: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.labelPhone{
+  position: absolute;
+  width: 53px;
+  height: 14px;
+  top: 278px;
+  left: 168px;
+  color: rgba(0, 0, 0, 0.46);
+  font-size: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+} 
+.labelPassword{
+  position: absolute;
+  width: 53px;
+  height: 14px;
+  top: 352px;
+  left: 168px;
+  color: rgba(0, 0, 0, 0.46);
+  font-size: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+
+input{
+  width: 330px;
+  height: 45px;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  background-color: transparent;
+}
+
+#name{
+  position: absolute;
+  top: 200px;
+  left: 159px;
+}
+
+#phone{
+  position: absolute;
+  top: 274px;
+  left: 159px;
+}
+#password{
+  position: absolute;
+  top: 348px;
+  left: 159px;
+}
+
+.continue-guest {
+  position: absolute;
+  text-align: center;
+  width:250px;
+  height: 45px;
+  top: 500px;
+  left: 200px;
+  background-color: rgba(156, 196, 210, 0.658);
+  font-size: 15px;
+  font-weight: 400;
+}
+
+#loginButton {
+  position: absolute;
+  width: 116px;
+  height: 32px;
+  top: 420px;
+  left: 266px;
+  cursor: pointer;
+  background: #2b579e;
+  border: none;
+  z-index: 4;
+  border-radius: 3px;
+  color: white;
+}
+.have-account {
+  position: relative;
+  color: #000000;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  left: 150px;
+  top: 360px;
+}
+.login {
+  position: relative;
+  color: rgb(46, 61, 171);
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: underline;
+  left: 318px;
+  top: 360px;
+}
+
+#errormsg{
+  position: absolute;
+  width: 190.587px;
+  height: 23px;
+  margin: -20px 0 0 0px;
+  color: red;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  display: block;
+  white-space: nowrap;
+  top: 500px;
+  left: 240px;
+}
